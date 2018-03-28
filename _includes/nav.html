@@ -1,28 +1,37 @@
-<ul id="nav">
-    {% assign level-1 = site.entries | where: "sectionclass", "h1" | sort: "number"%}
-    {% for entry in level-1 %}
-    <li {% if entry.is-parent or forloop.first %} class="{% if entry.is-parent %}parent{% endif %}{% if forloop.first %} current{% endif %}"{% endif %}>
-        <a href="#{{ entry.sectionid }}">{{ entry.title }}</a>
-        {% if entry.is-parent %}
-            <ul>
-                {% assign level-2 = site.entries | where: "parent-id", entry.sectionid | sort: "number" %}
-                {% for child in level-2 %}
-                    <li {% if child.is-parent %}class="parent"{% endif %}>
-                        <a href="#{{ child.sectionid }}">{{ child.title }}</a>
-                        {% if child.is-parent %}
-                            <ul>
-                                {% assign level-3 = site.entries | where: "parent-id", child.sectionid | sort: "number" %}
-                                {% for grandchild in level-3 %}
-                                <li>
-                                    <a href="#{{ grandchild.sectionid }}">{{ grandchild.title }}</a>
-                                </li>
-                                {% endfor %}
-                            </ul>
-                        {% endif %}
+ <!-- Navigation -->
+    <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand page-scroll" href="#page-top">
+                    <i class="fa fa-play-circle"></i>  <span class="light">Top</span>
+                </a>
+               <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand page-scroll" href="https://luismmontilla.github.io/">
+                    <i class="fa fa-fast-backward"></i>  <span class="light">Home</span>
+                </a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+                <ul class="nav navbar-nav">
+                    <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                    <li class="hidden">
+                        <a href="#page-top"></a>
                     </li>
-                {% endfor %}
-            </ul>
-        {% endif %}
-    </li>
-    {% endfor %}
-</ul>
+                    <li>
+                        <a class="page-scroll" href="#question">The question</a>
+                    </li>
+                     <li>
+                        <a class="page-scroll" href="#downloads">Downloads</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
